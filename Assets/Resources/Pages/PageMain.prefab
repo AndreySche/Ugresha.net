@@ -277,9 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc07a0abb62660d4fa92285a1936bf9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabButton: {fileID: 7751594390076598889, guid: bd3ecdbed4667134195afb7076262995,
-    type: 3}
-  _prefabDouble: {fileID: 3462611583522800326, guid: 527128aa396b8cc47b3fac445add5260,
+  _UIbutton: {fileID: 2192370496605652025, guid: 122bef6dfb5cfd84a898840f5e49c159,
     type: 3}
   _golfCourse: {fileID: 1641277484361996832}
 --- !u!1 &1641277485232994463

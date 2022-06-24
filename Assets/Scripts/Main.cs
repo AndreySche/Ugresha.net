@@ -9,7 +9,8 @@ namespace Ugresha
         [SerializeField] private GameObject _SafeAreaGB, _curtain, _menu;
         [SerializeField] private Transform _loadTarget;
         [SerializeField] private Image _backgoundImage;
-        private AppContoller _appController;
+        [SerializeField] private Menu _menuDown;
+        private AppController _appController;
         private SafeArea _safeArea;
 
         static public Theme ThemeBackground;
@@ -20,8 +21,8 @@ namespace Ugresha
             ThemeBackground = new Theme(_backgoundImage);
             ThemeBackground.ChangeTheme(true);
 
-            _appController = new AppContoller();
-            _appController.Init(_loadTarget, Page.PageReports);
+            _appController = new AppController(_loadTarget, Page.PageAuth);
+            _menuDown.Init(_appController);
         }
 
         void Update()

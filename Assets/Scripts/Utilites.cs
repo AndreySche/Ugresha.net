@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public static partial class Utilites
 {
-
     public static Transform Destroy(this Transform transform)
     {
         foreach (Transform child in transform) Object.Destroy(child.gameObject);
@@ -17,6 +16,7 @@ public static partial class Utilites
         gameObject.name = name;
         return gameObject;
     }
+
     public static GameObject Attach(this Transform transform, string word, GameObject prefab)
     {
         {
@@ -26,5 +26,22 @@ public static partial class Utilites
             instance.SetName(word);
             return instance;
         }
+    }
+
+    public static GameObject AddClick(this GameObject gameObject, string name)
+    {
+        gameObject.GetOrAddComponent<Button>().onClick.AddListener(() => Debug.Log(name));
+        return gameObject;
+    }
+
+    public static T GetOrAddComponent<T>(this GameObject gameObject) where T : Component
+    {
+        var result = gameObject.GetComponent<T>();
+        if (!result)
+        {
+            result = gameObject.AddComponent<T>();
+        }
+
+        return result;
     }
 }

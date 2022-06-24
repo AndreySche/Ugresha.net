@@ -2,7 +2,7 @@
 
 namespace Pages
 {
-    public class PageAuth : MonoBehaviour
+    public class PageError : MonoBehaviour
     {
         public void Init() { }
     }

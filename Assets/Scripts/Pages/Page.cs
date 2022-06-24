@@ -1,8 +1,9 @@
 ﻿
-enum Page
+public enum Page
 {
     PageAuth,
     PageMain,
     PageSettings,
-    PageReports
+    PageReports,
+    PageError
 }

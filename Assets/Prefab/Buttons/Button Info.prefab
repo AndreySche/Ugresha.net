@@ -36,8 +36,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 270, y: 0}
-  m_SizeDelta: {x: 440, y: 0}
+  m_AnchoredPosition: {x: 180.35715, y: 0}
+  m_SizeDelta: {x: 260.7143, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3462611582913935557
 CanvasRenderer:
@@ -107,11 +107,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreLayout: 0
-  m_MinWidth: 250
+  m_MinWidth: 10
   m_MinHeight: -1
   m_PreferredWidth: -1
   m_PreferredHeight: -1
-  m_FlexibleWidth: 250
+  m_FlexibleWidth: 100
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
 --- !u!1 &3462611583128220253
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 3462611583128220254}
   - component: {fileID: 3462611583128220255}
   m_Layer: 5
-  m_Name: info
+  m_Name: description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,8 +150,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 730, y: 0}
-  m_SizeDelta: {x: 440, y: 0}
+  m_AnchoredPosition: {x: 640.3572, y: 0}
+  m_SizeDelta: {x: 619.2857, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3462611583128220248
 CanvasRenderer:
@@ -240,9 +240,9 @@ GameObject:
   - component: {fileID: 3462611583522800322}
   - component: {fileID: 3462611583522800323}
   - component: {fileID: 3462611583522800320}
-  - component: {fileID: 3832873922504318082}
+  - component: {fileID: 6814266687747859063}
   m_Layer: 5
-  m_Name: Button Double Info
+  m_Name: Button Info
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -328,10 +328,10 @@ MonoBehaviour:
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
-  m_ChildControlHeight: 1
+  m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
---- !u!114 &3832873922504318082
+--- !u!114 &6814266687747859063
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -340,9 +340,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3462611583522800326}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bd0a1649fca93a47ad6464656c3d0f5, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a904b85ee9fdee4ea4dafc4b8038642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Text: {fileID: 3462611583128220249}
-  border: {fileID: 3462611583522800323}
   Title: {fileID: 3462611582913935418}
+  Border: {fileID: 3462611583522800323}
+  Description: {fileID: 3462611583128220249}
+  Link: 
