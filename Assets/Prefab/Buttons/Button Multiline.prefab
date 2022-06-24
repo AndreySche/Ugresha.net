@@ -207,5 +207,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d58348a77bf31478f0a655a61c59c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 7751594390072181737}
+  Text: {fileID: 7751594390072181737}
   border: {fileID: 7751594390076598806}

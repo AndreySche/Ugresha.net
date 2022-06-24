@@ -1,7 +1,5 @@
-﻿using System.Linq;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Pages
 {
@@ -9,42 +7,32 @@ namespace Pages
     {
         [SerializeField] private GameObject _prefabButton, _prefabDouble;
         [SerializeField] private Transform _golfCourse;
+
+        private List<VnuMenu> _data;
         public PageMain() { }
 
         public void Init()
         {
-            Clear(_golfCourse);
-            Attach(_golfCourse);
-            Debug.Log("PageMain.Init()");
+            _data = PushData();
+            _golfCourse.Destroy();
+            Attach(_golfCourse, _data);
         }
 
-        private void Attach(Transform transform)
+        private void Attach(Transform transform, List<VnuMenu> list)
         {
-            string word;
-            var prefab = _prefabButton;
-            for (int i = 0; i < 10; i++)
+            string title;
+            foreach(var button in list)
             {
-                word = $"button_{i}";
-                GameObject instance = Object.Instantiate(prefab);
-                instance.transform.SetParent(transform, false);
-                instance.SetName(word);
+                title = button.Title;
+                var res = transform.Attach(title, _prefabButton);
             }
         }
 
-        private void Clear(Transform transform)
+        private List<VnuMenu> PushData() // tmp : todo Pull From Server
         {
-            foreach (Transform child in transform) Destroy(child.gameObject);
-
+            var list = new List<VnuMenu>();
+            for (int i = 0; i < 10; ++i) list.Add(new VnuMenu($"title {i}", "description {i}", "link {i}"));
+            return list;
         }
-    }
-}
-
-
-public static partial class Utilites
-{
-    public static GameObject SetName(this GameObject gameObject, string name)
-    {
-        gameObject.name = name;
-        return gameObject;
     }
 }

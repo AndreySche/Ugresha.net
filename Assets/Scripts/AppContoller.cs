@@ -14,16 +14,23 @@ namespace Ugresha
         {
             _loadTarget = loadTarget;
             Load(page);
-            Load(page);
         }
 
         public void Load(Page page)
         {
             if (_actualPage == page) return;
 
+            _loadTarget.Destroy();
             _actualPage = page;
-            PageMain pageMain = EasyLoad<PageMain>("PageMain");
-            pageMain.Init();
+            switch (page)
+            {
+                case Page.PageAuth:
+                    PageAuth pageAuth = EasyLoad<PageAuth>("PageAuth");
+                    pageAuth.Init(); break;
+                default:
+                    PageMain pageMain = EasyLoad<PageMain>("PageMain");
+                    pageMain.Init(); break;
+            }
         }
 
         private T EasyLoad<T>(string file) where T : Component

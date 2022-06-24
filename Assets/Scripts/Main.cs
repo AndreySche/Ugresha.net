@@ -6,7 +6,7 @@ namespace Ugresha
 {
     public class Main : MonoBehaviour
     {
-        [SerializeField] private GameObject _SafeAreaGB, _curtain;
+        [SerializeField] private GameObject _SafeAreaGB, _curtain, _menu;
         [SerializeField] private Transform _loadTarget;
         [SerializeField] private Image _backgoundImage;
         private AppContoller _appController;
@@ -21,7 +21,7 @@ namespace Ugresha
             ThemeBackground.ChangeTheme(true);
 
             _appController = new AppContoller();
-            _appController.Init(_loadTarget, Page.PageMain);
+            _appController.Init(_loadTarget, Page.PageReports);
         }
 
         void Update()
