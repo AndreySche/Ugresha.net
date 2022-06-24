@@ -36,8 +36,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 214.10785, y: 0}
-  m_SizeDelta: {x: 328.2157, y: 0}
+  m_AnchoredPosition: {x: 270, y: 0}
+  m_SizeDelta: {x: 440, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3462611582913935557
 CanvasRenderer:
@@ -79,8 +79,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u0434\u043B\u0438\u043D\u043D\u044B\u0439  \u0434\u0432\u0443\u0445\u0441\u0442\u0440\u043E\u0447\u043D\u044B\u0439
-    title:"
+  m_Text: '{title}'
 --- !u!114 &3462611582913935419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,8 +150,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 636.10785, y: 0}
-  m_SizeDelta: {x: 475.78433, y: 0}
+  m_AnchoredPosition: {x: 730, y: 0}
+  m_SizeDelta: {x: 440, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3462611583128220248
 CanvasRenderer:
@@ -194,10 +193,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u0441\u0442\u0440\u043E\u043A\u0430 \u0441 \u043F\u0435\u0440\u0435\u043D\u043E\u0441\u043E\u043C
-    \u043D\u0430 \u043D\u043E\u0432\u0443\u044E \u0441\u0442\u0440\u043E\u043A\u0443
-    \u043D\u0435 \u0432\u043B\u0435\u0437\u0430\u044E\u0449\u0443\u044E \u0432 \u043E\u0434\u043D\u0443
-    \u0441\u0442"
+  m_Text: '{info}'
 --- !u!114 &3462611583128220254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,11 +263,11 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 1000, y: 200}
+  m_Pivot: {x: 0, y: 1}
 --- !u!222 &3462611583522800322
 CanvasRenderer:
   m_ObjectHideFlags: 0
