@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 7751594390076598805}
   - component: {fileID: 7751594390076598806}
   - component: {fileID: 7751594390076598807}
+  - component: {fileID: 324263585367540028}
   m_Layer: 5
   m_Name: Button Multiline
   m_TagString: Untagged
@@ -194,3 +195,17 @@ MonoBehaviour:
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!114 &324263585367540028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7751594390076598889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d58348a77bf31478f0a655a61c59c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 7751594390072181737}
+  border: {fileID: 7751594390076598806}
