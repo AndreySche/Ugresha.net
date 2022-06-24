@@ -17,9 +17,9 @@ namespace Ugresha
 
         public void Load(Page page)
         {
-            if (_actualPage == page) return;
-            Debug.Log($"{_actualPage} => {page}");
+            if (_actualPage == page) return; //Debug.Log($"{_actualPage} => {page}");
 
+            _actualPage = page;
             _loadTarget.Destroy();
             switch (page)
             {
@@ -28,19 +28,17 @@ namespace Ugresha
                     pageAuth.Init(); break;
                 case Page.PageMain:
                     PageMain pageMain = EasyLoad<PageMain>("PageMain");
-                    pageMain.Init(); break;
+                    pageMain.Init(this); break;
                 default:
                     PageError pageError = EasyLoad<PageError>("PageError");
                     pageError.Init(); break;
             }
-            _actualPage = page;
         }
 
         private T EasyLoad<T>(string file) where T : Component
         {
             return ResourceLoader.LoadAndInstantiateObject<T>(
-                new ResourcePath { PathResource = "Pages/" + file },
-                _loadTarget, false
+                new ResourcePath { PathResource = "Pages/" + file }, _loadTarget, false
             );
         }
     }

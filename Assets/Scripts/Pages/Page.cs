@@ -3,7 +3,15 @@ public enum Page
 {
     PageAuth,
     PageMain,
+    PagePay,
+    PagePrice,
     PageSettings,
     PageReports,
-    PageError
+    PageError,
+    UserInfo,
+    UserSms,
+    UserHold,
+    UserTv,
+    UserCredit,
+    UserNull
 }

@@ -4,10 +4,10 @@
     {
         public string Title;
         public string Description;
-        public string Link;
-        public VnuMenu() : this("title", "description", "back") { }
+        public Page Link;
+        public VnuMenu() : this("title", "description", Page.PageMain) { }
 
-        public VnuMenu(string title, string decription, string link)
+        public VnuMenu(string title, string decription, Page link)
         {
             Title = title;
             Description = decription;
