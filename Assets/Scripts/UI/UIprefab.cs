@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using Ugresha;
 
-namespace Pages {
+namespace Ugresha 
+{
     class UIprefab : MonoBehaviour
     {
         public GameObject PrefabButton, PrefabInfoButton;
 
-        public void SetInfo(VnuMenu info, AppController appController)
+        public void SetInfo(PageContent info)
         {
             var res = transform.Attach(info.Title, PrefabInfoButton);
             res.GetComponent<UIbuttonOne>().Title.text = $"{info.Title}:";
@@ -15,7 +14,7 @@ namespace Pages {
             res.GetComponent<UIbuttonOne>().Link = info.Link;
 
             if (info.Link == Page.UserNull) return;
-            res.GetOrAddComponent<Button>().onClick.AddListener(() => appController.Load(info.Link));
+            //res.GetOrAddComponent<Button>().onClick.AddListener(() => appController.Load(info.Link));
         }
     }
 }

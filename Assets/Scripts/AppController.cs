@@ -1,26 +1,50 @@
 ﻿using UnityEngine;
-using Tools;
-using Pages;
+using System.Collections.Generic;
 
 namespace Ugresha
 {
     public class AppController
     {
-        private Transform _loadTarget;
-        private Page _actualPage = Page.PageError;
+        private Page _actualPage;
+        private Transform _contentTarget;
+        private Authorization _authorization;
+        private PageCreator _pageCreator;
 
-        public AppController(Transform loadTarget, Page page)
+        public AppController(Transform contentTarget, Transform workArea, ref GameObject buttonCollection)
         {
-            _loadTarget = loadTarget;
-            Load(page);
+            _contentTarget = contentTarget;
+            _authorization = new Authorization();
+            _pageCreator = new PageCreator(_contentTarget, buttonCollection);
+            MenuDown menuDown = new MenuDown(workArea);
+            SwitchPage(Page.PageMain);
         }
 
-        public void Load(Page page)
+        public void SwitchPage(Page page)
+        {
+            if (_actualPage == page) return; //Debug.Log($"{_actualPage} => {page}");
+
+            UserAuth userAuth = _authorization.VerifyAuth();
+            if (userAuth.Aid <= 0) page = Page.PageAuth;
+
+            var server = new GetServerData();
+            var pageContent = server.Get(userAuth, Page.PageMain);
+
+            SwitchPageAfter(page, pageContent); // todo
+        }
+
+        public void SwitchPageAfter(Page page, List<PageContent> pageContent)
+        { 
+            _actualPage = page;
+            _contentTarget.Destroy();
+            _pageCreator.SetData(pageContent);
+        }
+
+        /*public void Load(Page page)
         {
             if (_actualPage == page) return; //Debug.Log($"{_actualPage} => {page}");
 
             _actualPage = page;
-            _loadTarget.Destroy();
+            _pageArea.Destroy();
             switch (page)
             {
                 case Page.PageAuth:
@@ -38,8 +62,8 @@ namespace Ugresha
         private T EasyLoad<T>(string file) where T : Component
         {
             return ResourceLoader.LoadAndInstantiateObject<T>(
-                new ResourcePath { PathResource = "Pages/" + file }, _loadTarget, false
+                new ResourcePath { PathResource = "Pages/" + file }, _pageArea, false
             );
-        }
+        }*/
     }
 }

@@ -1,28 +1,26 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace Ugresha
 {
     public class Main : MonoBehaviour
     {
-        [SerializeField] private GameObject _SafeAreaGB, _curtain, _menu;
-        [SerializeField] private Transform _loadTarget;
+        [SerializeField] private Transform _canvas;
         [SerializeField] private Image _backgoundImage;
-        [SerializeField] private Menu _menuDown;
-        private AppController _appController;
+        [SerializeField] private Transform _workArea, _contentTarget;
+        [SerializeField] private GameObject _buttonCollection;
         private SafeArea _safeArea;
-
         static public Theme ThemeBackground;
 
         void Awake()
         {
-            _safeArea = new SafeArea(_SafeAreaGB.GetComponent<RectTransform>());
-            ThemeBackground = new Theme(_backgoundImage);
-            ThemeBackground.ChangeTheme(true);
+            _safeArea = new SafeArea(_workArea.GetComponent<RectTransform>());
+            //Curtain curtain = new Curtain(_canvas);
 
-            _appController = new AppController(_loadTarget, Page.PageAuth);
-            _menuDown.Init(_appController);
+            ThemeBackground = new Theme(_backgoundImage);
+            ThemeBackground.SetThemeBlack(true);
+
+            new AppController(_contentTarget, _workArea, ref _buttonCollection);
         }
 
         void Update()
