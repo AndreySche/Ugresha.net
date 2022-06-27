@@ -4,70 +4,57 @@ namespace Ugresha
 {
     internal class ServerRequest
     {
-        public List<VnuList> Get(UserAuth userAuth, Page page)
+        public VnuBase Get(UserAuth userAuth, Page page)
         {
-            List<VnuList> content = null;
-            switch (page)
-            {
-                case (Page.PageMain): content = PageMainListJson(); break;
+            VnuBase vnuBase = new VnuBase();
 
-            }
-            return content;
+            // todo Get Or Set Coockies
+            // offline mode
+            vnuBase.Price = new List<VnuList>();
+            vnuBase.Lfstrm = new List<VnuList>();
+            vnuBase.UserInfo = userAuth.Guest ? GuestJson(page) : GuestJson(page); // todo getServer
+            vnuBase.News = new List<VnuList>();
+
+            return vnuBase;
         }
 
-        private List<VnuList> PageMainListJson()
+        private List<VnuList> GuestJson(Page page)
         {
             string json = @"
             {
                 ""array"": [
                     {
                         ""Name"": ""UserInfo"",
-                        ""Info"": { ""Title"": ""login"", ""Description"": [ ""u8986"" ]}
+                        ""Info"": { ""Title"": ""login"", ""Description"": [ ""u007"" ]}
                     },{
                         ""Name"": ""UserSms"",
-                        ""Info"": { ""Title"": ""phone"", ""Description"": [ ""0165022021"" ]}
+                        ""Info"": { ""Title"": ""phone"", ""Description"": [ ""9160001122"" ]}
                     },{
                         ""Name"": ""PagePay"",
-                        ""Info"": { ""Title"": ""balance"", ""Description"": [ ""1567.28"" ]}
+                        ""Info"": { ""Title"": ""balance"", ""Description"": [ 1567.28 ]}
                     },{
                         ""Name"": ""PagePrice"",
-                        ""Info"": { ""Title"": ""price"", ""Description"": [ ""123"" ]}
+                        ""Info"": { ""Title"": ""price"", ""Description"": [ 123 ]}
                     },{
                         ""Name"": ""UserHold"",
-                        ""Info"": { ""Title"": ""hold"", ""Description"": [ ""0"" ]}
+                        ""Info"": { ""Title"": ""hold"", ""Description"": [ 0 ]}
                     },{
                         ""Name"": ""UserTv"",
-                        ""Info"": { ""Title"": ""tv"", ""Description"": [ ""[1, 2, 3]"" ]}
+                        ""Info"": { ""Title"": ""tv"", ""Description"": [1, 2, 3]}
                     },{
                         ""Name"": ""UserCredit"",
-                        ""Info"": { ""Title"": ""credit"", ""Description"": [ ""123.02"" ]}
+                        ""Info"": { ""Title"": ""credit"", ""Description"": [ 123.02 ]}
                     },{
                         ""Name"": ""UserService"",
-                        ""Info"": { ""Title"": ""service"", ""Description"": [ ""[25]"" ]}
+                        ""Info"": { ""Title"": ""service"", ""Description"": [ 79 ]}
                     },{
                         ""Name"": ""UserIp"",
-                        ""Info"": { ""Title"": ""ip"", ""Description"": [ ""10.184.10.1"" ]}
+                        ""Info"": { ""Title"": ""ip"", ""Description"": [ ""2a06:4180:1:0:0:0:0:5a6"", ""10.184.10.1"" ]}
                     }
                 ]
             }
             ";
             return JsonLister.getJsonArray<VnuList>(json);
         }
-
-        //private List<VnuList> PageMainList()
-        //{
-        //    List<VnuList> list = new List<VnuList> {
-        //    new VnuList(){ Name = "UserInfo", Info = new VnuInfo() { Title = "login", Description = new List<string>(){ "u8986" } } },
-        //    new VnuList() { Name = "UserSms", Info = new VnuInfo() { Title = "phone", Description = new List<string>(){"0165022021" } } },
-        //    new VnuList() { Name = "PagePay", Info = new VnuInfo() { Title = "balance", Description = new List<string>(){"1567.28" } } },
-        //    new VnuList() { Name = "PagePrice", Info = new VnuInfo() { Title = "price", Description = new List<string>(){"123"} } },
-        //    new VnuList() { Name = "UserHold", Info = new VnuInfo() { Title = "hold", Description = new List<string>(){"0"} } },
-        //    new VnuList() { Name = "UserTv", Info = new VnuInfo() { Title = "tv", Description = new List<string>(){"[1, 2, 3]"} } },
-        //    new VnuList() { Name = "UserCredit", Info = new VnuInfo() { Title = "credit", Description = new List<string>(){"123.02"}  } },
-        //    new VnuList() { Name = "UserService", Info = new VnuInfo() { Title = "service", Description = new List<string>(){"[25]"} } },
-        //    new VnuList() { Name = "UserIp", Info = new VnuInfo() { Title = "ip", Description = new List<string>(){"10.184.10.1"} } }
-        //    };
-        //    return list;
-        //}
     }
 }

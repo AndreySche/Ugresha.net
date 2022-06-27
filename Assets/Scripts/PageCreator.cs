@@ -19,10 +19,10 @@ namespace Ugresha
             _appController.PreLoader(Page.PageMain);
         }
 
-        public void SetContent(Page page, List<VnuList> json)
+        public void SetContent(Page page, VnuBase vnuBase)
         {
             _contentTarget.Destroy();
-            var buttonList = _buttonFactory.CreateList(_contentTarget, json);
+            var buttonList = _buttonFactory.CreateList(_contentTarget, vnuBase);
         }
     }
 }

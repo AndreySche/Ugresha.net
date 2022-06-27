@@ -22,16 +22,17 @@ namespace Ugresha
             if (_actualPage == page) return; //Debug.Log($"{_actualPage} => {page}");
 
             UserAuth userAuth = _authorization.VerifyAuth();
-            if (userAuth.Aid <= 0) page = Page.PageAuth;
+            if (userAuth.Guest) page = Page.PageAuth;
 
-            var pageContent = _server.Get(userAuth, page);
-            AfterLoader(page, pageContent); // todo preloader view
+            VnuBase vnuBase = _server.Get(userAuth, page);
+            //var pageContent = _server.Get(userAuth, page);
+            AfterLoader(page, vnuBase); // todo preloader view
         }
 
-        public void AfterLoader(Page page, List<VnuList> json)
+        public void AfterLoader(Page page, VnuBase vnuBase)
         { 
             _actualPage = page;
-            _pageCreator.SetContent(page, json);
+            _pageCreator.SetContent(page, vnuBase);
         }
     }
 }
