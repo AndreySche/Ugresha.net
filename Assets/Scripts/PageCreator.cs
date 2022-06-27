@@ -5,24 +5,24 @@ namespace Ugresha
 {
     public class PageCreator
     {
-        private Transform _workArea;
+        private Transform _contentTarget;
         private GameObject _buttonCollection;
+        private AppController _appController;
+        private ButtonFactory _buttonFactory;
 
-        public PageCreator(Transform workArea, GameObject buttonCollection)
+        public PageCreator(Transform contentTarget, ref GameObject buttonCollection)
         {
+            _contentTarget = contentTarget;
             _buttonCollection = buttonCollection;
-            _workArea = workArea;
+            _buttonFactory = new ButtonFactory(ref buttonCollection);
+            _appController = new AppController(this);
+            _appController.PreLoader(Page.PageMain);
         }
 
-        public void SetData(List<PageContent> list)
+        public void SetContent(Page page, List<VnuList> json)
         {
-            string title;
-            foreach (var button in list)
-            {
-                title = button.Title;
-                var res = _workArea.Attach(title, _buttonCollection);
-                res.GetComponent<UIprefab>().SetInfo(button);
-            }
+            _contentTarget.Destroy();
+            var buttonList = _buttonFactory.CreateList(_contentTarget, json);
         }
     }
 }

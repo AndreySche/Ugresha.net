@@ -7,8 +7,8 @@ namespace Ugresha
     {
         public Curtain(Transform target)
         {
-            var newObject = new AddRectTransform(target, SetData(), "Curtain");
-            //Debug.Log(newObject.Box.RectToString());
+            GameObject newObject = target.AddRectTransform(SetData(), "Curtain");
+            newObject.SetActive(false); // Debug.Log(newObject.Box.RectToString());
         }
 
         private RectDictionary SetData()

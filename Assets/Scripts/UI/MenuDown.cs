@@ -4,9 +4,9 @@ using UnityEngine;
 namespace Ugresha
 {    public class MenuDown
     {
-        public MenuDown(Transform obj)
+        public MenuDown(Transform target, ref GameObject buttonCollection)
         {
-            var newObject = new AddRectTransform(obj, SetData(), "MenuDown");
+            var newObject = target.AddRectTransform(SetData(), "MenuDown");
             //Debug.Log(newObject.Box.RectToString());
         }
 

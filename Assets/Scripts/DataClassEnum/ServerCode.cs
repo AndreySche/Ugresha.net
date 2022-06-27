@@ -1,4 +1,4 @@
-﻿public enum Server
+﻿public enum ServerCode
 {
     Error,
     BadAuth,

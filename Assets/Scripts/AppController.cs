@@ -6,64 +6,32 @@ namespace Ugresha
     public class AppController
     {
         private Page _actualPage;
-        private Transform _contentTarget;
         private Authorization _authorization;
         private PageCreator _pageCreator;
+        private ServerRequest _server;
 
-        public AppController(Transform contentTarget, Transform workArea, ref GameObject buttonCollection)
+        public AppController(PageCreator pageCreator)
         {
-            _contentTarget = contentTarget;
+            _pageCreator = pageCreator;
+            _server = new ServerRequest();
             _authorization = new Authorization();
-            _pageCreator = new PageCreator(_contentTarget, buttonCollection);
-            MenuDown menuDown = new MenuDown(workArea);
-            SwitchPage(Page.PageMain);
         }
 
-        public void SwitchPage(Page page)
+        public void PreLoader(Page page)
         {
             if (_actualPage == page) return; //Debug.Log($"{_actualPage} => {page}");
 
             UserAuth userAuth = _authorization.VerifyAuth();
             if (userAuth.Aid <= 0) page = Page.PageAuth;
 
-            var server = new GetServerData();
-            var pageContent = server.Get(userAuth, Page.PageMain);
-
-            SwitchPageAfter(page, pageContent); // todo
+            var pageContent = _server.Get(userAuth, page);
+            AfterLoader(page, pageContent); // todo preloader view
         }
 
-        public void SwitchPageAfter(Page page, List<PageContent> pageContent)
+        public void AfterLoader(Page page, List<VnuList> json)
         { 
             _actualPage = page;
-            _contentTarget.Destroy();
-            _pageCreator.SetData(pageContent);
+            _pageCreator.SetContent(page, json);
         }
-
-        /*public void Load(Page page)
-        {
-            if (_actualPage == page) return; //Debug.Log($"{_actualPage} => {page}");
-
-            _actualPage = page;
-            _pageArea.Destroy();
-            switch (page)
-            {
-                case Page.PageAuth:
-                    PageAuth pageAuth = EasyLoad<PageAuth>("PageAuth");
-                    pageAuth.Init(); break;
-                case Page.PageMain:
-                    PageMain pageMain = EasyLoad<PageMain>("PageMain");
-                    pageMain.Init(this); break;
-                default:
-                    PageError pageError = EasyLoad<PageError>("PageError");
-                    pageError.Init(); break;
-            }
-        }
-
-        private T EasyLoad<T>(string file) where T : Component
-        {
-            return ResourceLoader.LoadAndInstantiateObject<T>(
-                new ResourcePath { PathResource = "Pages/" + file }, _pageArea, false
-            );
-        }*/
     }
 }
