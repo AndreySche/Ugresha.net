@@ -7,21 +7,21 @@ namespace Ugresha
     internal sealed class ButtonFactory
     {
         private GameObject _buttonCollection;
-        private TranslatorExchange _translatorExchange;
+        private TranslatorExchange _translator;
         public ButtonFactory(ref GameObject buttonCollection)
         {
             _buttonCollection = buttonCollection;
-            _translatorExchange = new TranslatorExchange(Lang.Rus);
+            _translator = new TranslatorExchange(Lang.Rus);
         }
 
         public List<GameObject> CreateList(Transform contentTarget, VnuBase vnuBase)
         {
             GameObject prefab = _buttonCollection.GetComponentInChildren<UIprefab>().PrefabInfoButton; // костыль
             List<GameObject> buttonList = new List<GameObject>();
-            foreach (var line in vnuBase.UserInfo)
+            foreach (VnuList line in vnuBase.UserInfo)
             {
-                string title = _translatorExchange.TitleExchange(line.Info.Title);
-                string description = string.Join("\n", line.Info.Description);
+                string title = _translator.TitleExchange(line.Info.Title);
+                string description = _translator.DescExchange(line.Info, vnuBase);
 
                 var res = contentTarget.Attach(line.Name, prefab);
                 buttonList.Add(res);

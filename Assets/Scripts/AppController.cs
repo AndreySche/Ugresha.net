@@ -25,7 +25,6 @@ namespace Ugresha
             if (userAuth.Guest) page = Page.PageAuth;
 
             VnuBase vnuBase = _server.Get(userAuth, page);
-            //var pageContent = _server.Get(userAuth, page);
             AfterLoader(page, vnuBase); // todo preloader view
         }
 

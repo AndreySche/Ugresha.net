@@ -31,25 +31,25 @@ namespace Ugresha
                         ""Info"": { ""Title"": ""phone"", ""Description"": [ ""9160001122"" ]}
                     },{
                         ""Name"": ""PagePay"",
-                        ""Info"": { ""Title"": ""balance"", ""Description"": [ 1567.28 ]}
+                        ""Info"": { ""Title"": ""balance"", ""Description"": [ ""1567,28234"" ]}
                     },{
                         ""Name"": ""PagePrice"",
                         ""Info"": { ""Title"": ""price"", ""Description"": [ 123 ]}
                     },{
                         ""Name"": ""UserHold"",
-                        ""Info"": { ""Title"": ""hold"", ""Description"": [ 0 ]}
+                        ""Info"": { ""Title"": ""hold"", ""Description"": [ 3 ]}
                     },{
                         ""Name"": ""UserTv"",
                         ""Info"": { ""Title"": ""tv"", ""Description"": [1, 2, 3]}
                     },{
                         ""Name"": ""UserCredit"",
-                        ""Info"": { ""Title"": ""credit"", ""Description"": [ 123.02 ]}
+                        ""Info"": { ""Title"": ""credit"", ""Description"": [ ""123,2"" ]}
                     },{
                         ""Name"": ""UserService"",
                         ""Info"": { ""Title"": ""service"", ""Description"": [ 79 ]}
                     },{
                         ""Name"": ""UserIp"",
-                        ""Info"": { ""Title"": ""ip"", ""Description"": [ ""2a06:4180:1:0:0:0:0:5a6"", ""10.184.10.1"" ]}
+                        ""Info"": { ""Title"": ""ip"", ""Description"": [ ""2a06:4180:1:0:0:0:0:0000"", ""10.184.0.0"" ]}
                     }
                 ]
             }
