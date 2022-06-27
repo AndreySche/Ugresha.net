@@ -31,7 +31,7 @@ namespace Ugresha
         /// Установить темную тему
         /// </summary>
         /// <param name="dark">ага</param>
-        public void ChangeTheme(bool dark)
+        public void SetThemeBlack(bool dark)
         {
             string ddark = dark ? "true" : "false";
             SetImage(dark);
