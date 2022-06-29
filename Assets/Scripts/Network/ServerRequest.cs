@@ -16,12 +16,8 @@ namespace Ugresha
             return new VnuBase()
             {
                 Price = JsonConvert.DeserializeObject<Dictionary<int, PriceInfo>>(priceJson),
-                User = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, List<string>>>>(userJson)
+                User = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, List<string>>[]>>(userJson)
             };
         }
-        // ""UserInfo"":   { ""login"": [ ""u007"" ] },
-        // {""UserInfo"":   { ""login"": [ ""u007"" ] }},
-
-        //private T ParsePages<T>(string value) => (T)Page.Parse(typeof(T), value, true); // enumParser
     }
 }

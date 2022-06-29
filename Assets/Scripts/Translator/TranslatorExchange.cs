@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace Ugresha
 {
@@ -8,9 +9,9 @@ namespace Ugresha
         private Dictionary<string, string> _dictTitles;
         public TranslatorExchange(Lang lang) => _dictTitles = SetDictTitles(lang);
         public string TitleExchange(string name) => _dictTitles.ContainsKey(name) ? _dictTitles[name] : name;
-        private string Float(string a) => double.Parse(a).ToString("#,0.##");
+        private string Float(string a) => double.Parse(a, CultureInfo.InvariantCulture).ToString("#,0.##");
         private string Phone(string a) => String.Format(@"+7 {0:(###) ###-##-##}", double.Parse(a));
-        private string Credit(string a, string rub) => double.Parse(a) > 0 ? $"{Float(a)}{rub}" : "отключен";
+        private string Credit(string a, string rub) => double.Parse(a, CultureInfo.InvariantCulture) > 0 ? $"{Float(a)}{rub}" : "отключен";
         private string Price(int a, VnuBase vnuBase) =>
             vnuBase.Price.ContainsKey(a) ? vnuBase.Price[a].Title : a.ToString();
 

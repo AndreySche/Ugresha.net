@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
+using System;
 
 namespace Ugresha
 {
@@ -28,19 +30,27 @@ namespace Ugresha
                 var res = contentTarget.Attach(line.Key, prefab);
                 buttonList.Add(res);
 
-                var desc = line.Value.First();
-                string title = _translator.TitleExchange(line.Value.First().Key);
+                var desc = line.Value.First().First();
+                string title = _translator.TitleExchange(line.Value.First().First().Key);
                 string description = _translator.DescExchange(desc.Key, desc.Value, vnuBase);
 
                 res.GetComponent<UIbuttonOne>().Title.text = $"{title}:";
                 res.GetComponent<UIbuttonOne>().Description.text = $"{description}";
+                Enum.TryParse(line.Key, out res.GetComponent<UIbuttonOne>().Link);
 
-                //res.GetComponent<UIbuttonOne>().Link = line.Link;
+                bool noLink = false;
+                foreach (var a in line.Value)
+                {
+                    //Debug.Log(a.First().Key);
+                    if (a.First().Key == "noLink") { noLink = true; break; }
+                }
+                if (noLink) continue;
 
-                //if (button.Link == Page.UserNull) continue;
-                //res.GetOrAddComponent<Button>().onClick.AddListener(() => appController.Load(info.Link));
+                res.GetOrAddComponent<Button>().onClick.AddListener(() => Debug.Log(line.Key));
             }
             return buttonList; ;
         }
+
+        private T ToEnum<T>(string value) => (T)Enum.Parse(typeof(T), value, true);
     }
 }

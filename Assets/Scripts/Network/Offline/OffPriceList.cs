@@ -205,15 +205,15 @@
         public string User()
         {
             return @"{
-                ""UserInfo"":   { ""Login"": [ ""u007"" ]},
-                ""UserSms"":    { ""Phone"": [ ""9160001122"" ]},              
-                ""PagePay"":    { ""Balance"": [ ""1567,28"" ]},
-                ""PagePrice"":  { ""Price"": [ ""123"" ] },
-                ""UserHold"":   { ""Hold"": [ ""0""] },
-                ""UserTv"":     { ""Tv"": [1, 2, 3] },
-                ""UserCredit"": { ""Credit"": [ ""123,02"" ]},
-                ""UserService"":{ ""Service"": [ 79 ]},
-                ""UserIp"":     { ""Ip"": [ ""2a06:4180:1:0:0:0:0:5a6"", ""10.184.10.1"" ]}
+                ""UserInfo"":   [{ ""Login"": [ ""u007"" ]}],
+                ""UserSms"":    [{ ""Phone"": [ ""9160001122"" ]}],              
+                ""PagePay"":    [{ ""Balance"": [ 1567.28 ]}],
+                ""PagePrice"":  [{ ""Price"": [ ""123"" ] }],
+                ""UserHold"":   [{ ""Hold"": [ ""0""] }],
+                ""UserTv"":     [{ ""Tv"": [1, 2, 3] }],
+                ""UserCredit"": [{ ""Credit"": [ 123.02 ]}],
+                ""UserService"":[{ ""Service"": [ 79 ]}],
+                ""a"":          [{ ""Ip"": [ ""2a06:4180:1:0:0:0:0:5a6"", ""10.184.10.1"" ]}, {""noLink"": [1]}]
             }";
         }
     }
