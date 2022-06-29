@@ -85,5 +85,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PrefabButton: {fileID: 7751594390076598889, guid: bd3ecdbed4667134195afb7076262995,
     type: 3}
-  PrefabInfoButton: {fileID: 3462611583522800326, guid: 527128aa396b8cc47b3fac445add5260,
+  PrefabButtonInfo: {fileID: 3462611583522800326, guid: 527128aa396b8cc47b3fac445add5260,
+    type: 3}
+  PrefabButtonMenu: {fileID: 9174866255928337307, guid: f4883f8ee8c0c5c4d9df8f82f5f2a3fc,
     type: 3}

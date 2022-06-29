@@ -4,10 +4,11 @@ namespace Ugresha
 {
     public class VnuBase
     {
-        public List<VnuList> Price;
-        public List<VnuList> Lfstrm;
-        public List<VnuList> UserInfo;
-        public List<VnuList> News;
-        public List<VnuList> Alert;
+        public Dictionary<int, PriceInfo> Price;
+        public Dictionary<int, string> HoldDictionary;
+        public Dictionary<string, Dictionary<string, List<string>>> User;
+        //public List<Price> LfstrmList;
+        //public List<Price> NewsList;
+        //public List<Price> AlertList;
     }
 }

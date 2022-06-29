@@ -14,25 +14,33 @@ namespace Ugresha
             _translator = new TranslatorExchange(Lang.Rus);
         }
 
-        public List<GameObject> CreateList(Transform contentTarget, VnuBase vnuBase)
+        public List<GameObject> CreateButtons(Transform contentTarget, Page page, VnuBase vnuBase)
         {
-            GameObject prefab = _buttonCollection.GetComponentInChildren<UIprefab>().PrefabInfoButton; // костыль
-            List<GameObject> buttonList = new List<GameObject>();
-            foreach (VnuList line in vnuBase.UserInfo)
-            {
-                string title = _translator.TitleExchange(line.Info.Title);
-                string description = _translator.DescExchange(line.Info, vnuBase);
+            return CreateUserInfo(contentTarget, vnuBase);
+        }
 
-                var res = contentTarget.Attach(line.Name, prefab);
+        private List<GameObject> CreateUserInfo(Transform contentTarget, VnuBase vnuBase)
+        {
+            GameObject prefab = _buttonCollection.GetComponentInChildren<UIprefab>().PrefabButtonInfo; // todo
+            List<GameObject> buttonList = new List<GameObject>();
+            foreach (var line in vnuBase.User)
+            {
+                var res = contentTarget.Attach(line.Key, prefab);
                 buttonList.Add(res);
+
+                var desc = line.Value.First();
+                string title = _translator.TitleExchange(line.Value.First().Key);
+                string description = _translator.DescExchange(desc.Key, desc.Value, vnuBase);
+
                 res.GetComponent<UIbuttonOne>().Title.text = $"{title}:";
                 res.GetComponent<UIbuttonOne>().Description.text = $"{description}";
+
                 //res.GetComponent<UIbuttonOne>().Link = line.Link;
 
                 //if (button.Link == Page.UserNull) continue;
                 //res.GetOrAddComponent<Button>().onClick.AddListener(() => appController.Load(info.Link));
             }
-            return buttonList;
+            return buttonList; ;
         }
     }
 }

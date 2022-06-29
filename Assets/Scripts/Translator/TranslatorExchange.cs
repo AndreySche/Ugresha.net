@@ -8,22 +8,26 @@ namespace Ugresha
         private Dictionary<string, string> _dictTitles;
         public TranslatorExchange(Lang lang) => _dictTitles = SetDictTitles(lang);
         public string TitleExchange(string name) => _dictTitles.ContainsKey(name) ? _dictTitles[name] : name;
-        private string Float(string a) => double.Parse(a).ToString("0,0.##");
+        private string Float(string a) => double.Parse(a).ToString("#,0.##");
         private string Phone(string a) => String.Format(@"+7 {0:(###) ###-##-##}", double.Parse(a));
         private string Credit(string a, string rub) => double.Parse(a) > 0 ? $"{Float(a)}{rub}" : "отключен";
-        internal string DescExchange(VnuInfo info, VnuBase vnuBase)
+        private string Price(int a, VnuBase vnuBase) =>
+            vnuBase.Price.ContainsKey(a) ? vnuBase.Price[a].Title : a.ToString();
+
+        internal string DescExchange(string key, List<string> list, VnuBase vnuBase)
         {
             string rub = "₽";
             List<string> newString = new List<string>();
-            foreach (var description in info.Description)
-            {
-                switch (info.Title)
+            foreach (var text in list)
+            { 
+                switch (key)
                 {
-                    case "phone": newString.Add($"{Phone(description)}"); break;
-                    case "balance": newString.Add($"{Float(description)}{rub}"); break;
-                    case "credit": newString.Add($"{Credit(description, rub)}"); break;
-                    case "hold": newString.Add($"{Hold(int.Parse(description))}"); break;
-                    default: newString.Add(description); break;
+                    case "Phone": newString.Add($"{Phone(text)}"); break;
+                    case "Balance": newString.Add($"{Float(text)}{rub}"); break;
+                    case "Credit": newString.Add($"{Credit(text, rub)}"); break;
+                    case "Hold": newString.Add($"{Hold(int.Parse(text))}"); break;
+                    case "Price": newString.Add($"{Price(int.Parse(text), vnuBase)}"); break;
+                    default: newString.Add(text); break;
                 }
             }
             return string.Join("\n", newString);
@@ -41,7 +45,7 @@ namespace Ugresha
              };
 
             if (!list.ContainsKey(status))
-                list.Add(status,  new HoldTitles() { Class = "red", Title = $"code: {status.ToString()}" });
+                list.Add(status, new HoldTitles() { Class = "red", Title = $"code: {status.ToString()}" });
 
             return $"<color=\"{list[status].Class}\">{list[status].Title}</color>";
         }
@@ -49,15 +53,15 @@ namespace Ugresha
         private Dictionary<string, string> SetDictTitles(Lang lang)
         {
             return new Dictionary<string, string>() {
-                { "login", "логин" },
-                { "phone", "телефон для sms" },
-                { "balance", "баланс" },
-                { "price", "тариф" },
-                { "hold", "блокировка" },
-                { "tv", "смотрешка тв" },
-                { "credit", "обещанный платеж" },
-                { "service", "доп.услуги" },
-                { "ip", "ip адрес" }
+                { "Login", "логин" },
+                { "Phone", "телефон для sms" },
+                { "Balance", "баланс" },
+                { "Price", "тариф" },
+                { "Hold", "блокировка" },
+                { "Tv", "смотрешка тв" },
+                { "Credit", "обещанный платеж" },
+                { "Service", "доп.услуги" },
+                { "Ip", "ip адрес" }
             };
         }
     }

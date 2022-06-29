@@ -7,15 +7,14 @@ namespace Ugresha
 {
     class JsonLister
     {
-        public static List<T> getJsonArray<T>(string json)
+        public static List<T> JsonToArray<T>(string json)
         {
-            if (json.Substring(0, 1) == "{") json = $"[{json}]";    // andreySche
-            string newJson = "{ \"array\": " + json + "}";
+            //if (json.Substring(0, 1) == "{") json = $"[{json}]";    // andreySche
             Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(json);
             return wrapper.array;
         }
 
-        public static string arrayToJson<T>(List<T> array, bool prettyPrint = false)
+        public static string ArrayToJson<T>(List<T> array, bool prettyPrint = false)
         {
             Wrapper<T> wrapper = new Wrapper<T>();
             wrapper.array = array;

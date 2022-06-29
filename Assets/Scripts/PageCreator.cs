@@ -22,7 +22,7 @@ namespace Ugresha
         public void SetContent(Page page, VnuBase vnuBase)
         {
             _contentTarget.Destroy();
-            var buttonList = _buttonFactory.CreateList(_contentTarget, vnuBase);
+            var buttonList = _buttonFactory.CreateButtons(_contentTarget, page, vnuBase);
         }
     }
 }

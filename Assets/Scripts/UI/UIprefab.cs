@@ -1,9 +1,20 @@
 ﻿using UnityEngine;
 
-namespace Ugresha 
+namespace Ugresha
 {
     class UIprefab : MonoBehaviour
     {
-        public GameObject PrefabButton, PrefabInfoButton;
+        public GameObject PrefabButton, PrefabButtonInfo, PrefabButtonMenu;
+
+        public GameObject Get(string name)
+        {
+            switch (name)
+            {
+                case "info": return PrefabButtonInfo;
+                case "menu": return PrefabButtonMenu;
+            }
+            return PrefabButton;
+        }
+
     }
 }
