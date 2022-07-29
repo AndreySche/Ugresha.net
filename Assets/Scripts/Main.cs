@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Ugresha
@@ -6,28 +7,31 @@ namespace Ugresha
     public class Main : MonoBehaviour
     {
         [SerializeField] private Transform _canvas;
-        [SerializeField] private Image _backgoundImage;
-        [SerializeField] private Transform _workArea, _contentTarget;
+        [SerializeField] private Image _backgroundImage;
+        [SerializeField] private Transform _scrollArea, _staticArea;
         [SerializeField] private GameObject _buttonCollection;
 
-        static public Theme ThemeBackground;
-        private SafeArea _safeArea;
+        private List<IUpdatable> _updatableList = new List<IUpdatable>();
 
         void Awake()
         {
-            _safeArea = new SafeArea(_workArea.GetComponent<RectTransform>());
-            Curtain curtain = new Curtain(_canvas); // for preloader
-            var menu = new MenuDown(_workArea, ref _buttonCollection);
+            Transform target = GetComponent<Transform>();
 
-            ThemeBackground = new Theme(_backgoundImage);
-            ThemeBackground.SetThemeBlack(true);
+            // добавляем в IUpdatable => safeArea
+            AddUpdatable(new SafeArea(target.GetComponent<RectTransform>()));
 
-            new PageCreator(_contentTarget, ref _buttonCollection);
+            // создаем рабочее поле: curtain, background, scrollarea, menuDown
+            ServiceArea serviceArea = new ServiceArea(_canvas, _backgroundImage, _scrollArea, _staticArea, _buttonCollection);
         }
 
         void Update()
         {
-            _safeArea.Update();
+            foreach (var item in _updatableList) item.Update();
+        }
+
+        public void AddUpdatable(IUpdatable updatable)
+        {
+            _updatableList.Add(updatable);
         }
     }
 }

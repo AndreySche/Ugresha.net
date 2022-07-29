@@ -6,23 +6,24 @@ namespace Ugresha
     {
         public MenuDown(Transform target, ref GameObject buttonCollection)
         {
-            var newObject = target.AddRectTransform(SetData(), "MenuDown");
+            var newObject = target.AddRectTransform(RectData(), "MenuDown");
             //Debug.Log(newObject.Box.RectToString());
         }
 
-        private RectDictionary SetData()
+        private RectDictionary RectData()
         {
             return new RectDictionary()
             {
-                color = new Color(0, 0, 0, 0.5f),
+                //color = new Color(0, 0, 0, 0.5f),
+                color = new Color(100 / 255f, 100 / 255f, 100 / 255f, 0.5f), // tmp
                 points = new Dictionary<string, List<float>>
                 {
-                    { "anchorMin", new List<float>{ 0, 0 }},
                     { "anchorMax", new List<float>{ 1, 0 }},
+                    { "anchorMin", new List<float>{ 0, 0 }},
                     { "pivot", new List<float>{ 0.5f, 0 }},
                     { "anchoredPosition", new List<float>{ 0, 0 }},
-                    { "offsetMin", new List<float>{ 0, -100 }},
-                    { "offsetMax", new List<float>{ 0, 250 }},
+                    { "offsetMax", new List<float>{ 0, 200 }},
+                    { "offsetMin", new List<float>{ 0, -50 }}
                 }
             };
         }

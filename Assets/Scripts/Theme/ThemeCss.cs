@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 namespace Ugresha
 {
     static class ThemeCss
@@ -25,7 +24,7 @@ namespace Ugresha
                 { "whiteAlpha", new Color(1f, 1f, 1f, 0.15f) },
                 { "black", new Color(0, 0, 0, 1f) },
                 { "grey", new Color(100/255f, 100/255f, 100/255f, 1f) },
-                { "darkBlue", new Color(12/255f, 15/255f, 24/255f, 1f) }
+                { "darkBlue", new Color(10/255f, 12/255f, 2/255f, 1f) }
             };
             return _styles;
         }

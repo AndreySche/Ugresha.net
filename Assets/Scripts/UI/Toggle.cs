@@ -24,7 +24,7 @@ namespace Ugresha
         {
             ThemeDark = !ThemeDark;
             SetColor(ThemeDark);
-            Main.ThemeBackground.SetThemeBlack(ThemeDark);
+            //Main.ThemeBackground.SetThemeBlack(ThemeDark);
         }
 
         private void SetColor(bool dark)

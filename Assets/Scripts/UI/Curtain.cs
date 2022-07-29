@@ -7,11 +7,11 @@ namespace Ugresha
     {
         public Curtain(Transform target)
         {
-            GameObject newObject = target.AddRectTransform(SetData(), "Curtain");
+            GameObject newObject = target.AddRectTransform(RectData(), "Curtain");
             newObject.SetActive(false); // Debug.Log(newObject.Box.RectToString());
         }
 
-        private RectDictionary SetData()
+        private RectDictionary RectData()
         {
             return new RectDictionary()
             {
